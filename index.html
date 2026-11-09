@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#9b4f19">
+  <meta name="description" content="Your personal discipline, sadhana, fitness and focus companion.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="WINTER ARC">
+  <title>WINTER ARC</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-lockup">
+        <div class="brand-mark">ॐ</div>
+        <div><div class="eyebrow">YOUR PERSONAL DISCIPLINE COMPANION</div><h1>WINTER ARC</h1></div>
+      </div>
+      <button class="icon-button" id="installBtn" hidden aria-label="Install app">＋</button>
+    </header>
+
+    <section class="hero card">
+      <div class="hero-top"><span class="pill" id="todayLabel">TODAY</span><span class="streak">🔥 <b id="streakCount">0</b> day streak</span></div>
+      <p class="sanskrit">उद्धरेदात्मनात्मानं</p>
+      <h2>Master your day.<br><em>Shape your life.</em></h2>
+      <p class="muted">Small actions. Steady discipline. Meaningful progress.</p>
+      <div class="progress-wrap"><div class="progress-meta"><span>Today's discipline</span><strong id="progressText">0%</strong></div><div class="progress-track"><div id="progressBar" class="progress-fill"></div></div></div>
+    </section>
+
+    <nav class="tabs" aria-label="Main navigation">
+      <button class="tab active" data-tab="today">Today</button>
+      <button class="tab" data-tab="sadhana">Sadhana</button>
+      <button class="tab" data-tab="fitness">Fitness</button>
+      <button class="tab" data-tab="nutrition">Nutrition</button>
+      <button class="tab" data-tab="work">Agency</button>
+    </nav>
+
+    <main>
+      <section class="panel active" id="panel-today">
+        <div class="section-heading"><div><div class="eyebrow">YOUR DAILY RHYTHM</div><h2>Today's commitments</h2></div><span class="date-chip" id="dateChip"></span></div>
+        <div class="routine card">
+          <div class="routine-row"><span class="time">3:30 AM</span><div><b>Wake & reset</b><small>Water, make your bed, no phone</small></div><span class="routine-dot"></span></div>
+          <div class="routine-row"><span class="time">3:45 AM</span><div><b>Meditation</b><small>20–30 minutes of stillness or mantra</small></div><span class="routine-dot"></span></div>
+          <div class="routine-row"><span class="time">After meditation</span><div><b>Walk</b><small>Build gradually towards 5 km</small></div><span class="routine-dot"></span></div>
+          <div class="routine-row"><span class="time">Morning</span><div><b>Gym</b><small>Strength session or planned recovery</small></div><span class="routine-dot"></span></div>
+          <div class="routine-row"><span class="time">9 AM–1 PM</span><div><b>Deep work</b><small>Strategy, sales and high-value agency work</small></div><span class="routine-dot"></span></div>
+          <div class="routine-row"><span class="time">2–5:30 PM</span><div><b>Agency execution</b><small>Team, clients, campaigns and delivery</small></div><span class="routine-dot"></span></div>
+          <div class="routine-row"><span class="time">Evening</span><div><b>Family & reflection</b><small>Close work, connect, journal and wind down</small></div><span class="routine-dot"></span></div>
+          <div class="routine-row"><span class="time">10 PM</span><div><b>Sleep target</b><small>Protect 7–9 hours; adjust wake time if needed</small></div><span class="routine-dot"></span></div>
+        </div>
+        <div class="section-heading compact"><div><div class="eyebrow">DAILY CHECK-IN</div><h2>Keep your promises</h2></div><span class="muted small">Tap to complete</span></div>
+        <div class="habit-list card" id="habitList"></div>
+        <div class="habit-manager card">
+          <div class="manager-heading"><div><b>Customise your habits</b><small>Add new habits or remove ones that no longer fit.</small></div><button class="secondary-btn" id="addDailyHabit">＋ Add habit</button></div>
+          <div class="add-habit-form" id="dailyHabitForm" hidden>
+            <input id="dailyHabitName" type="text" maxlength="48" placeholder="e.g. No phone during meals">
+            <input id="dailyHabitNote" type="text" maxlength="90" placeholder="Short reminder (optional)">
+            <div class="form-actions"><button class="primary-btn" id="saveDailyHabit">Add to Today</button><button class="secondary-btn" id="cancelDailyHabit">Cancel</button></div>
+          </div>
+        </div>
+        <div class="quote-card"><div class="eyebrow">TODAY'S REMINDER</div><p id="quoteText">You do not rise to the level of your goals. You fall to the level of your systems.</p><span id="quoteAuthor">— James Clear</span><button id="newQuote" class="text-button">Another thought ↗</button></div>
+      </section>
+
+      <section class="panel" id="panel-sadhana">
+        <div class="section-heading"><div><div class="eyebrow">INNER DISCIPLINE</div><h2>Brahmacharya & sadhana</h2></div></div>
+        <div class="card feature-card">
+          <div class="feature-icon">ॐ</div><h3>Return to awareness</h3><p class="muted">Brahmacharya as mindful use of attention, moderation and self-respect. No shame, no perfection test.</p>
+          <div class="timer-display" id="timerDisplay">20:00</div>
+          <div class="timer-actions"><button class="primary-btn" id="timerStart">Start meditation</button><button class="secondary-btn" id="timerReset">Reset</button></div>
+          <div class="timer-presets"><button data-min="5">5 min</button><button data-min="10">10 min</button><button data-min="20" class="selected">20 min</button><button data-min="30">30 min</button></div>
+        </div>
+        <div class="section-heading compact"><div><div class="eyebrow">SENSES & ATTENTION</div><h2>Daily sadhana habits</h2></div></div>
+        <div class="habit-list card" id="sadhanaList"></div>
+        <div class="habit-manager card">
+          <div class="manager-heading"><div><b>Customise sadhana habits</b><small>Add or remove your spiritual and self-discipline practices.</small></div><button class="secondary-btn" id="addSadhanaHabit">＋ Add habit</button></div>
+          <div class="add-habit-form" id="sadhanaHabitForm" hidden>
+            <input id="sadhanaHabitName" type="text" maxlength="48" placeholder="e.g. Evening gratitude prayer">
+            <input id="sadhanaHabitNote" type="text" maxlength="90" placeholder="Short reminder (optional)">
+            <div class="form-actions"><button class="primary-btn" id="saveSadhanaHabit">Add to Sadhana</button><button class="secondary-btn" id="cancelSadhanaHabit">Cancel</button></div>
+          </div>
+        </div>
+        <div class="card note-card"><b>Gentle principle</b><p class="muted">A difficult day is information, not failure. Notice the trigger, choose your next action, and begin again.</p></div>
+      </section>
+
+      <section class="panel" id="panel-fitness">
+        <div class="section-heading"><div><div class="eyebrow">BUILD YOUR BODY</div><h2>Movement & training</h2></div></div>
+        <div class="stats-grid">
+          <div class="stat card"><span>WALK GOAL</span><strong>5 <small>km</small></strong><label>Build up gradually</label></div>
+          <div class="stat card"><span>STARTING WEIGHT</span><strong>95 <small>kg</small></strong><label>Update in Nutrition</label></div>
+        </div>
+        <div class="card form-card">
+          <h3>Log today's walk</h3><label for="walkKm">Distance walked (km)</label><div class="input-row"><input id="walkKm" type="number" min="0" max="50" step="0.1" placeholder="e.g. 3.5"><button class="primary-btn" id="saveWalk">Save walk</button></div><div class="mini-progress"><div id="walkBar"></div></div><p class="muted small" id="walkStatus">0 of 5 km logged today</p>
+        </div>
+        <div class="card form-card">
+          <h3>Gym session</h3><label for="workoutType">Today's training</label><select id="workoutType"><option>Full body strength</option><option>Upper body</option><option>Lower body & core</option><option>Low-impact cardio</option><option>Mobility / recovery</option><option>Rest day</option></select><label for="workoutNote">Notes (optional)</label><input id="workoutNote" type="text" placeholder="Exercises, sets, how it felt"><button class="primary-btn full" id="saveWorkout">Save workout</button><p class="muted small" id="workoutStatus">No workout logged yet today.</p>
+        </div>
+        <div class="card note-card"><b>Progress safely</b><p class="muted">Start below your current capacity and increase distance or resistance gradually. Stop for chest pain, dizziness or unusual breathlessness. Consider a clinician's advice before vigorous training.</p></div>
+      </section>
+
+      <section class="panel" id="panel-nutrition">
+        <div class="section-heading"><div><div class="eyebrow">FUEL WITH INTENTION</div><h2>Nutrition & weight</h2></div></div>
+        <div class="stats-grid">
+          <div class="stat card"><span>CALORIE GUIDE</span><strong>1,800 <small>kcal*</small></strong><label>Provisional starting estimate</label></div>
+          <div class="stat card"><span>PROTEIN GUIDE</span><strong>100–120 <small>g</small></strong><label>Personalise with clinician if needed</label></div>
+        </div>
+        <div class="card form-card">
+          <h3>Today's food check-in</h3>
+          <label for="calories">Calories (optional)</label><input id="calories" type="number" min="0" placeholder="e.g. 1800">
+          <label for="protein">Protein in grams</label><input id="protein" type="number" min="0" placeholder="e.g. 105">
+          <label for="water">Water (litres)</label><input id="water" type="number" min="0" step="0.1" placeholder="e.g. 2.5">
+          <label for="foodNote">Meals / notes</label><textarea id="foodNote" rows="2" placeholder="Dal, tofu, paneer, curd, vegetables..."></textarea>
+          <button class="primary-btn full" id="saveFood">Save nutrition</button><p class="muted small" id="foodStatus">No nutrition log yet today.</p>
+        </div>
+        <div class="card form-card">
+          <h3>Weight check-in</h3><p class="muted small">Log under similar conditions, ideally once weekly. Starting reference: 95 kg.</p>
+          <div class="input-row"><input id="weightInput" type="number" min="20" max="300" step="0.1" placeholder="Weight in kg"><button class="primary-btn" id="saveWeight">Save</button></div>
+          <p class="muted small" id="weightStatus">No weight logged today.</p>
+        </div>
+        <p class="muted tiny">*The calorie figure is a placeholder, not a medical prescription. Your final needs depend on sex, activity, health and progress. A 10 PM bedtime with a 3:30 AM wake-up allows only 5.5 hours; most adults need 7–9 hours. Consider an earlier bedtime or later wake-up.</p>
+      </section>
+
+      <section class="panel" id="panel-work">
+        <div class="section-heading"><div><div class="eyebrow">BUILD THE BUSINESS</div><h2>Agency focus</h2></div></div>
+        <div class="card form-card">
+          <h3>Today's three priorities</h3>
+          <p class="muted small">Protect your highest-value work first.</p>
+          <input id="task1" type="text" placeholder="Priority 1 — e.g. sales / proposals">
+          <input id="task2" type="text" placeholder="Priority 2 — e.g. client strategy">
+          <input id="task3" type="text" placeholder="Priority 3 — e.g. team delivery">
+          <button class="primary-btn full" id="saveTasks">Save priorities</button>
+          <div id="taskChecks" class="task-checks"></div>
+        </div>
+        <div class="card">
+          <h3>Suggested focus blocks</h3>
+          <div class="focus-row"><b>9:00–11:00</b><span>Revenue, sales and growth</span></div>
+          <div class="focus-row"><b>11:00–1:00</b><span>Strategy and creative direction</span></div>
+          <div class="focus-row"><b>2:00–4:00</b><span>Team and client execution</span></div>
+          <div class="focus-row"><b>4:00–5:30</b><span>Approvals, follow-ups and wrap-up</span></div>
+        </div>
+      </section>
+    </main>
+
+    <footer><span>WINTER ARC</span><span>Progress, not perfection.</span></footer>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
